@@ -23,7 +23,10 @@ jobs:
         uses: bahmutov/npm-install@v1
 
       - name: Build project
-        run: npm run build
+        run: |
+          export VITE_NODE_ENV=production
+          export NODE_OPTIONS=--experimental-global-fetch
+          npm run build
 
       - name: Upload production-ready build files
         uses: actions/upload-artifact@v4
